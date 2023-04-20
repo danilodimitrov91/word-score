@@ -7,6 +7,114 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Installation
+
+After project is cloned from git repository you should follow these steps:
+
+Enter project folder
+```bash
+cd project-folder
+```
+Install dependencies
+```bash
+composer install
+```
+Copy .env.example file to .env
+```bash
+cp .env.example .env
+```
+Generate application key by running
+```bash
+php artisan key:generate
+```
+After this open .env file and enter database credentials
+
+Run migrations to create tables in your database by following command
+```bash
+php artisan migrate
+```
+Run passport:install to make oAuth2 clients
+```bash
+php artisan passport:install
+```
+
+If you want to setup testing envoirnment you should have .env.testing file, following command will copy your existing .env to .env.testing
+```bash
+cp .env .env.testing
+```
+
+Change content of .env.testing if you need to
+
+To generate api documents run following command
+```bash
+php artisan l5-swagger:generate
+```
+docs will be available on /api/documentation
+
+To run tests use
+```bash
+php artisan test
+```
+
+To serve your app use
+```bash
+php artisan serve
+```
+
+Also you can use docker container
+```bash
+php artisan sail:install
+
+./vendor/bin/sail up
+```
+
+## Usage
+
+Purpose of this project is to calculate popularity of a given word. App searches github issues for `{word}
+rocks` as positive results and `{word} sucks` as negative results, then it calculates the `score` that can be in a range of 0-10 based on `positive/total` ratio. Our plan is to add more providers in the future.
+
+You can use this service by entering following url:
+```
+api/v1/score?word=php
+```
+or
+```
+api/v2/score?word=php
+```
+
+Example of V1 results:
+```json
+{
+  "id": 4,
+  "word": "php",
+  "provider": "github",
+  "positive": 3278,
+  "negative": 6165,
+  "score": 3.47,
+  "created_at": "2023-04-19T17:47:56.000000Z",
+  "updated_at": "2023-04-19T17:47:56.000000Z"
+}
+```
+Example of V2 results (JSONAPI compliant):
+```json
+{
+  "data": {
+    "type": "word",
+    "id": "4",
+    "attributes": {
+      "id": 4,
+      "word": "php",
+      "provider": "github",
+      "positive": 3278,
+      "negative": 6165,
+      "score": 3.47,
+      "created_at": "2023-04-19T17:47:56.000000Z",
+      "updated_at": "2023-04-19T17:47:56.000000Z"
+    }
+  }
+}
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

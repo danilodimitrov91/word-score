@@ -6,15 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WordScoreRequest;
 use App\Services\WordScore\WordScoreService;
 
-/**
- * @OA\OpenApi(
- *     @OA\Info(
- *         version="1.0",
- *         title="Todo List Api Version 1",
- *         description="Demo Todo List Api Version 1",
- *     )
- * )
- */
 class WordScoreController extends Controller
 {
     /**
@@ -41,7 +32,7 @@ class WordScoreController extends Controller
      */
     public function getScore(WordScoreRequest $request, WordScoreService $wordScoreService)
     {
-        //call service that will take care of business logic
+        //call service that will take care of the business logic
         $score = $wordScoreService->getScore($request);
 
         return response()->json($score);
