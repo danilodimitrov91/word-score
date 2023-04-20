@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::get('score', [\App\Http\Controllers\Api\v1\WordScoreController::class, 'getScore']);
+});
+
+Route::prefix('v2')->group(function () {
+    Route::get('score', [\App\Http\Controllers\Api\v2\WordScoreController::class, 'getScore']);
 });

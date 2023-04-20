@@ -1,0 +1,58 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Todo List Api Version 1",
+        "description": "Demo Todo List Api Version 1",
+        "version": "1.0"
+    },
+    "paths": {
+        "/v1/api/score": {
+            "get": {
+                "operationId": "c4231a39128d4ef2f7a0b1b742fb6274",
+                "parameters": [
+                    {
+                        "name": "word",
+                        "in": "query",
+                        "description": "Word",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                }
+            }
+        },
+        "/v2/api/score": {
+            "get": {
+                "operationId": "6c3147c6df2364b1fca70ecd98a4cda9",
+                "parameters": [
+                    {
+                        "name": "word",
+                        "in": "query",
+                        "description": "Word",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                }
+            }
+        }
+    }
+}
